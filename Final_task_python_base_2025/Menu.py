@@ -1,9 +1,9 @@
-from Logic import show_all
+from Logic import show_all, add_record, update_record, delete_record, conn_close
 def display_menu():
-    print("1. Add")
-    print("2. Change")
-    print("3. Delete")
-    print("4. Show all")
+    print("1. Add record")
+    print("2. Update record")
+    print("3. Delete record")
+    print("4. Show all records")
     print("5. Exit")
 
 
@@ -27,13 +27,15 @@ def main():
 
         if choice == 1:
             print("You choose point 1")
+            add_record()
         elif choice == 2:
-            pass
+            update_record()
         elif choice == 3:
-            pass
+            delete_record()
         elif choice == 4:
             show_all()
         elif choice == 5:
+            conn_close()
             print("Thanks, bye")
             break
 
