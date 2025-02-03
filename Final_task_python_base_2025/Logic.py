@@ -121,6 +121,7 @@ def show_all():
     # Показ всех записей в таблице
     cursor.execute("SELECT * FROM t_input_test")
     list = cursor.fetchall()
+    print('Таблица записей: ')
     for data in list:
         print(data)
 
