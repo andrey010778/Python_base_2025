@@ -95,6 +95,7 @@ class App:
     def add(self):
         name = self.name_entry.get()
         age = self.age_entry.get()
+        add_data(name, age)
         self.refresh_list()
 
     def update(self):
