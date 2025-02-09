@@ -114,7 +114,7 @@ def delete_record():
     # cursor.execute("ALTER SEQUENCE t_input_test_id_seq RESTART WITH 1")
     # conn.commit()
     # cursor.close()
-    # conn.close()
+    # conn.close()]
 
 
 def show_all():

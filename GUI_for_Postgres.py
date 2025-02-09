@@ -57,7 +57,9 @@ def delete_data(id):
         return
     cursor = conn.cursor()
     try:
-        cursor.execute("Delete from t_input_test where id=%s", (id,))
+        cursor.execute("delete from t_input_test where id=%s", (id,))
+        conn.commit()
+        messagebox.showinfo("Success. Data was deleted")
     except Exception as e:
         messagebox.showerror("Error", f"Unable to delete data: {e}")
     finally:
@@ -68,6 +70,16 @@ class App:
     def __init__(self, root):
         self.root = root
         self.root.title("List of person")
+
+        #Add menu
+        self.menu_bar = tk.Menu(root)
+        self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
+        self.file_menu.add_command(label='Exit', command=self.exit_program)
+        self.menu_bar.add_cascade(label="File", menu=self.file_menu)
+        self.root.config(menu=self.menu_bar)
+
+        #To close window
+        self.root.protocol("WM_DELETE_WINDOW", self.exit_program)
 
         # Input fields
         self.name_label = tk.Label(root, text="Name")
@@ -123,7 +135,9 @@ class App:
         for row in rows:
             self.listbox.insert(tk.END, f"{row[0]} {row[1]} {row[2]}")
 
-
+    def exit_program(self):
+        if messagebox.askyesno("Are you sure to exit?"):
+            self.root.destroy()
 
 
 if __name__ == "__main__":
